@@ -22,6 +22,7 @@ namespace IParcial
         {
             //Llamamos las funciones
             HornearPizza();
+            MessageBox.Show("Mensaje Normal");
         }
 
         private void HornearPizza()
@@ -42,7 +43,26 @@ namespace IParcial
         {
             //Llamamos la funcion 
             HornearPizzaAsync();
+            MessageBox.Show("Mensaje Asincrono");
         }
 
+        private async void CalcularButton_Click(object sender, EventArgs e)
+        {
+            decimal num1 = Convert.ToDecimal(Numero1TextBox.Text);
+            decimal num2 = Convert.ToDecimal(Numero2TextBox.Text);
+
+            decimal total = await SumarAsync(num1, num2);
+            MessageBox.Show($"La Suma es: {total}");
+        }
+
+        //Metodo asincrono que permita calcular la suma de los dos textbox
+        private async Task<decimal> SumarAsync(decimal n1, decimal n2)
+        {
+            decimal suma = await Task.Run(() =>
+            {
+                return n1 + n2;
+            });
+            return suma;
+        }
     }
 }
