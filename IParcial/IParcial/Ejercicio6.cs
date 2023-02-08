@@ -54,7 +54,5 @@ namespace IParcial
                 comboBox1.Items.Add(item); //Agregamos al comobox
             }
         }
-
-       
     }
 }
